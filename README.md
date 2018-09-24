@@ -2,6 +2,8 @@
 A solution to dynamically handle images on the fly, utilizing Thumbor (thumbor.org).
 Published version, additional details and documentation are available here: https://aws.amazon.com/answers/web-applications/serverless-image-handler/
 
+_**Note:** [`upstream`](https://github.com/northwoodspd/serverless-image-handler/tree/upstream) is intended to be always in sync with `upstream`'s `master`_
+
 ## Docker Environment Setup
 In order to build the package locally, you'll need to build the docker image. In order to do so, run the following command:
 
