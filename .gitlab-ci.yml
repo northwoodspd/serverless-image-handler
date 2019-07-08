@@ -4,7 +4,7 @@
     - traverseinfra
 
 variables:
-  IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/sharp-image-handler-$CI_JOB_ID.zip
+  IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/sharp-image-handler-$CI_PIPELINE_ID.zip
 
 stages:
   - build
