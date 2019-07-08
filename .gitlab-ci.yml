@@ -11,7 +11,7 @@ image_handler_lambda:
   image: docker
   stage: build
   variables:
-    IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/image-handler-$CI_JOB_ID.zip
+    IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/sharp-image-handler-$CI_JOB_ID.zip
   artifacts:
     paths:
       - $IMAGE_HANDLER_ZIP
