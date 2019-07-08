@@ -3,18 +3,28 @@
     - t3.small
     - traverseinfra
 
+variables:
+  IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/sharp-image-handler-$CI_JOB_ID.zip
+
 stages:
   - build
+  - deploy
 
 image_handler_lambda:
   <<: *infra
   image: docker
   stage: build
-  variables:
-    IMAGE_HANDLER_ZIP: $CI_PROJECT_DIR/sharp-image-handler-$CI_JOB_ID.zip
   artifacts:
     paths:
       - $IMAGE_HANDLER_ZIP
   script:
     - docker run --rm -i -v $PWD:/development -w /development amazonlinux:2018.03 ./package.sh
     - mv deployment/dist/image-handler.zip $IMAGE_HANDLER_ZIP
+
+deploy:image_handler:
+  image:
+    name: northwoods/packer:latest
+  <<: *infra
+  dependencies:
+    - image_handler_lambda
+  script: aws s3 cp $IMAGE_HANDLER_ZIP s3://traverse-lambda-artifacts/$(basename $IMAGE_HANDLER_ZIP)
