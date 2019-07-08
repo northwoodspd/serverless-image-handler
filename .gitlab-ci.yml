@@ -22,6 +22,7 @@ image_handler_lambda:
     - mv deployment/dist/image-handler.zip $IMAGE_HANDLER_ZIP
 
 deploy:image_handler:
+  stage: deploy
   image:
     name: northwoods/packer:latest
   <<: *infra
