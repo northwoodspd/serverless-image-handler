@@ -25,6 +25,7 @@ deploy:image_handler:
   stage: deploy
   image:
     name: northwoods/packer:latest
+    entrypoint: [""]
   <<: *infra
   dependencies:
     - image_handler_lambda
